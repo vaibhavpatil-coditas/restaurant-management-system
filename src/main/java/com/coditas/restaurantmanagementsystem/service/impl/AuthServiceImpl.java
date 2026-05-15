@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,11 +20,15 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public LoginResponse login(LoginRequest loginRequest) {
+        LoginResponse loginResponse = null;
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
         if(authentication.isAuthenticated()){
-            authentication.
+            UserDetails user = (UserDetails) authentication.getPrincipal();
+            if(user != null) loginResponse = LoginResponse.builder()
+                    .token(jwtUtils.generateToken(user))
+                    .build();
         }
-        return null;
+        return loginResponse;
     }
 }

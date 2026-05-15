@@ -7,10 +7,10 @@ spring:
   jpa:
     properties.hibernate.default_schema: "dev"
     hibernate.ddl_auto: update
-
-server:
-  servlet:
-    context-path: "/api"
+#
+#server:
+#  servlet:
+#    context-path: "/api"
 
 Jwt:
   SECRET: "Coditas@12093!18203@91823#09128$30298%30123^76543&12145*12245"

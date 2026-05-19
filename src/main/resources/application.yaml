@@ -1,16 +1,23 @@
 spring:
   application.name: restaurant-management-system
-#  datasource:
-#    url: "jdbc:postgresql://localhost:5432/restaurant-management-system"
-#    username: "postgres"
-#    password: "coditas@"
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/restaurant-management-system"
+    username: "postgres"
+    password: "coditas@"
   jpa:
     properties.hibernate.default_schema: "dev"
     hibernate.ddl_auto: update
-#
-#server:
-#  servlet:
-#    context-path: "/api"
+  mail:
+    host: "smtp.gmail.com"
+    port: 587
+    username: "vaibhav.patil@coditas.com"
+#    username: "vaibhavspatil512004@gmail.com"
+#    password: "sogq ncrp fsvh tfzb"
+#    password: "utxw qmlm hrce olzc"
+    password: "ktyd eeqq zzfe lrou"
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
 
 Jwt:
   SECRET: "Coditas@12093!18203@91823#09128$30298%30123^76543&12145*12245"

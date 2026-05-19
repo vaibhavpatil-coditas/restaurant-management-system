@@ -26,11 +26,16 @@ public class User implements UserDetails {
     private String username;
     private String password;
 
+    private String name;
+
     @Column(unique = true)
     private String email;
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToOne(mappedBy = "owner")
+    private Company company;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

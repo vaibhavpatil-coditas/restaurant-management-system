@@ -5,12 +5,14 @@ import com.coditas.restaurantmanagementsystem.dto.response.LoginResponse;
 import com.coditas.restaurantmanagementsystem.security.jwt.JwtUtils;
 import com.coditas.restaurantmanagementsystem.service.AuthService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
@@ -23,12 +25,11 @@ public class AuthServiceImpl implements AuthService {
         LoginResponse loginResponse = null;
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-        if(authentication.isAuthenticated()){
-            UserDetails user = (UserDetails) authentication.getPrincipal();
-            if(user != null) loginResponse = LoginResponse.builder()
-                    .token(jwtUtils.generateToken(user))
-                    .build();
-        }
+        UserDetails user = (UserDetails) authentication.getPrincipal();
+        log.info("{}", user.getUsername());
+        if(user != null) loginResponse = LoginResponse.builder()
+                .token(jwtUtils.generateToken(user))
+                .build();
         return loginResponse;
     }
 }

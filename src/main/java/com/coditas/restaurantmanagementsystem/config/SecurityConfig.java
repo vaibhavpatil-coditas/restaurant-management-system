@@ -30,6 +30,7 @@ public class SecurityConfig {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth->auth
+                        .requestMatchers(ApiPaths.RestaurantManager.BASE+ApiPaths.RestaurantManager.REGISTER).permitAll()
                         .requestMatchers(ApiPaths.RestaurantOwner.BASE+ApiPaths.RestaurantOwner.REGISTER).permitAll()
                         .requestMatchers(ApiPaths.Auth.BASE+"/**").permitAll()
                         .anyRequest().authenticated())

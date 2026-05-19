@@ -1,9 +1,12 @@
 package com.coditas.restaurantmanagementsystem.controller;
 
 import com.coditas.restaurantmanagementsystem.constants.ApiPaths;
+import com.coditas.restaurantmanagementsystem.dto.DishDto;
+import com.coditas.restaurantmanagementsystem.dto.DishRequestDto;
 import com.coditas.restaurantmanagementsystem.dto.request.BranchManagerRegistrationRequest;
 import com.coditas.restaurantmanagementsystem.dto.response.ApplicationResponse;
 import com.coditas.restaurantmanagementsystem.dto.response.BranchManagerRegistrationResponse;
+import com.coditas.restaurantmanagementsystem.dto.response.DishResponseDto;
 import com.coditas.restaurantmanagementsystem.service.BranchManagerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -31,5 +34,15 @@ public class BranchManagerController {
                         .data(branchManagerService.register(request))
                         .build()
         );
+    }
+
+    @PostMapping(ApiPaths.BranchManager.DISH)
+    public ResponseEntity<ApplicationResponse<DishResponseDto>> addDish(@Valid @RequestBody DishRequestDto dishRequestDto){
+        return ResponseEntity.created(URI.create(ApiPaths.BranchManager.DISH))
+                .body(ApplicationResponse.<DishResponseDto>builder()
+                        .success(true)
+                        .message("Dish added by branch manager")
+                        .data(branchManagerService.addDish(dishRequestDto))
+                        .build());
     }
 }

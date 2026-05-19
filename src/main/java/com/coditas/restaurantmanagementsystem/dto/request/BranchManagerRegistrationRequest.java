@@ -8,8 +8,8 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 public class BranchManagerRegistrationRequest {
-    @NotNull
+    @NotNull(message = "User details should be provided")
     private UserRequestDto user;
-    @NotNull
+    @NotNull(message = "Branch details should be provided")
     private BranchRequestDto branch;
 }

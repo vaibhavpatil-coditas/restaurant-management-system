@@ -8,8 +8,8 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 public class RestaurantManagerRegistrationRequest {
-    @NotNull
+    @NotNull(message = "Enter user credentials")
     private UserRequestDto user;
-    @NotNull
+    @NotNull(message = "Enter restaurant details")
     private RestaurantRequestDto restaurant;
 }

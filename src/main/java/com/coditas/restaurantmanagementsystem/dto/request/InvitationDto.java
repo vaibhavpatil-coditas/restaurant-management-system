@@ -8,6 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class InvitationDto {
-    @Email
+    @Email(message = "Enter valid email")
     private String email;
 }

@@ -1,6 +1,7 @@
 package com.coditas.restaurantmanagementsystem.dto.request;
 
 import com.coditas.restaurantmanagementsystem.enums.Role;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -11,14 +12,14 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class UserRequestDto {
-    @NotBlank
+    @NotBlank(message = "Username should not be blank")
     private String username;
-    @NotBlank
+    @NotBlank(message = "Name should not be blank")
     private String name;
-    @NotBlank
+    @Email(message = "Email should be provided")
     private String email;
-    @NotNull
+    @NotNull(message = "Role should be not null")
     private Role role;
-    @NotBlank
+    @NotBlank(message = "Password should be not blank")
     private String password;
 }

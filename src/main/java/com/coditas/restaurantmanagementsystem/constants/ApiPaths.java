@@ -37,9 +37,10 @@ public interface ApiPaths {
         String INVITATIONS = Common.INVITATIONS;
     }
 
-    public interface BranchManager {
+    interface BranchManager {
         String BASE = BASE_API + "/branch-manager";
 
         String REGISTER = Common.REGISTER;
+        String DISH = "/{id}/dish";
     }
 }

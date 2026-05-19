@@ -8,8 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OwnerRegistrationRequest {
-    @NotNull
+    @NotNull(message = "Enter user details")
     private UserRequestDto user;
-    @NotNull
+    @NotNull(message = "Enter Company details")
     private CompanyRequestDto company;
 }

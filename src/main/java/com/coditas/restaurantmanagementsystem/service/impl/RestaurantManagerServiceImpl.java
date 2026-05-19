@@ -70,7 +70,7 @@ public class RestaurantManagerServiceImpl implements RestaurantManagerService {
                         Best regards,
                         %s
                         """.formatted(invitationDto.getEmail().split("\\.")[0],
-                ApiPaths.RestaurantManager.BASE+ApiPaths.RestaurantOwner.REGISTER,
+                ApiPaths.BranchManager.BASE+ApiPaths.BranchManager.REGISTER,
                 "Company Name");
 
         EmailDetails emailDetails = EmailDetails.builder()

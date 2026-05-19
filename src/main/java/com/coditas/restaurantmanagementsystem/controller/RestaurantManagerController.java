@@ -9,6 +9,7 @@ import com.coditas.restaurantmanagementsystem.service.RestaurantManagerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,7 @@ public class RestaurantManagerController {
     }
 
     @PostMapping(ApiPaths.RestaurantManager.INVITATIONS)
+    @PreAuthorize("hasRole('ROLE_RESTAURANT_MANAGER')")
     public ResponseEntity<ApplicationResponse<InvitationDto>> inviteBranchManager(@Valid @RequestBody InvitationDto invitationDto){
         return ResponseEntity.ok(ApplicationResponse.<InvitationDto>builder()
                 .success(true)
